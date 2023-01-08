@@ -16,8 +16,13 @@ function App() {
   const defaultLength = 12
 
   const [length, setLength] = useState<number>(defaultLength)
+  const [lowercase, setLowercase] = useState<boolean>(true)
+  const [uppercase, setUppercase] = useState<boolean>(true)
+  const [numbers, setNumbers] = useState<boolean>(true)
+  const [symbols, setSymbols] = useState<boolean>(true)
   const [password, setPassword] = useState<string>("ABCDEFG")
 
+  //Input handling functions
   const handleSliderChange = (event: Event, newLength: number|number[]) => {
     setLength(newLength as number)
   }
@@ -30,9 +35,24 @@ function App() {
     }
   }
 
+  const handleLowercaseSwitch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setLowercase(event.target.checked)
+  }
+
+  const handleUppercaseSwitch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUppercase(event.target.checked)
+  }
+
+  const handleNumbersSwitch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setNumbers(event.target.checked)
+  }
+
+  const handleSymbolsSwitch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSymbols(event.target.checked)
+  }
+
   const handleGeneratePassword = () => {
-    const password: string = generatePassword(true, true, true, true, 15)
-    setPassword(password)
+    setPassword(generatePassword(lowercase, uppercase, numbers, symbols, length))
   }
 
   return (
@@ -54,10 +74,30 @@ function App() {
         >
           <h3>Options</h3>
           <div className='switch-container'>
-            <FormControlLabel control={<Switch defaultChecked />} label="Lowercase" labelPlacement='start' />
-            <FormControlLabel control={<Switch defaultChecked />} label="Uppercase" labelPlacement='start' />
-            <FormControlLabel control={<Switch defaultChecked />} label="Numbers" labelPlacement='start' />
-            <FormControlLabel control={<Switch defaultChecked />} label="Symbols" labelPlacement='start' />
+            <FormControlLabel 
+            control={<Switch 
+              checked={lowercase}
+              onChange={handleLowercaseSwitch} />} 
+            label="Lowercase" 
+            labelPlacement='start' />
+            <FormControlLabel 
+            control={<Switch 
+              checked={uppercase}
+              onChange={handleUppercaseSwitch} />} 
+            label="Uppercase" 
+            labelPlacement='start' />
+            <FormControlLabel 
+            control={<Switch 
+              checked={numbers}
+              onChange={handleNumbersSwitch} />} 
+            label="Numbers" 
+            labelPlacement='start' />
+            <FormControlLabel 
+            control={<Switch 
+              checked={symbols}
+              onChange={handleSymbolsSwitch} />} 
+            label="Symbols" 
+            labelPlacement='start' />
           </div>
           <h3>Length</h3>
           <FormControlLabel 

@@ -1,5 +1,5 @@
-export default function generatePassword(uppercase: Boolean,
-    lowercase: Boolean,
+export default function generatePassword(lowercase: Boolean,
+    uppercase: Boolean,
     numbers: Boolean,
     symbols: Boolean,
     length: number) {
@@ -21,7 +21,7 @@ export default function generatePassword(uppercase: Boolean,
     }
 
     //Handling in case the function is called with no options selected
-    if (!uppercase && !lowercase && !numbers && symbols) return ""
+    if (!uppercase && !lowercase && !numbers && !symbols) return ""
 
     return [...Array(length)].map((value) => {
         return charset[Math.floor(Math.random() * (charset.length))]
