@@ -20,7 +20,7 @@ function App() {
   const [uppercase, setUppercase] = useState<boolean>(true)
   const [numbers, setNumbers] = useState<boolean>(true)
   const [symbols, setSymbols] = useState<boolean>(true)
-  const [password, setPassword] = useState<string>("ABCDEFG")
+  const [password, setPassword] = useState<string>(generatePassword(lowercase, uppercase, numbers, symbols, length))
 
   //Input handling functions
   const handleSliderChange = (event: Event, newLength: number|number[]) => {
