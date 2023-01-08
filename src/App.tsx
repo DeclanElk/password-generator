@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './index.css'
+import generatePassword from './Functions';
 import { Card, 
   Switch, 
   FormGroup, 
@@ -13,7 +14,9 @@ function App() {
   const minLength = 5;
   const maxLength = 20;
   const defaultLength = 12
+
   const [length, setLength] = useState<number>(defaultLength)
+  const [password, setPassword] = useState<string>("ABCDEFG")
 
   const handleSliderChange = (event: Event, newLength: number|number[]) => {
     setLength(newLength as number)
@@ -25,6 +28,11 @@ function App() {
     if(!Number.isNaN(valueInt) && valueInt >= minLength && valueInt <= maxLength) {
       setLength(valueInt)
     }
+  }
+
+  const handleGeneratePassword = () => {
+    const password: string = generatePassword(true, true, true, true, 15)
+    setPassword(password)
   }
 
   return (
@@ -46,8 +54,8 @@ function App() {
         >
           <h3>Options</h3>
           <div className='switch-container'>
-            <FormControlLabel control={<Switch defaultChecked />} label="Uppercase" labelPlacement='start' />
             <FormControlLabel control={<Switch defaultChecked />} label="Lowercase" labelPlacement='start' />
+            <FormControlLabel control={<Switch defaultChecked />} label="Uppercase" labelPlacement='start' />
             <FormControlLabel control={<Switch defaultChecked />} label="Numbers" labelPlacement='start' />
             <FormControlLabel control={<Switch defaultChecked />} label="Symbols" labelPlacement='start' />
           </div>
@@ -85,13 +93,14 @@ function App() {
           <TextField 
             id = "outlined-basic" 
             variant = "outlined" 
-            value = {"test val"} 
+            value = {password} 
             InputProps = {{
               readOnly: true,
             }}
             aria-readonly />
           <Button 
           variant = "contained"
+          onClick={handleGeneratePassword}
           sx = {{
             width: '120px',
             margin: '1rem auto 0',
