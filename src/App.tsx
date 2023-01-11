@@ -77,25 +77,29 @@ function App() {
             <FormControlLabel 
             control={<Switch 
               checked={lowercase}
-              onChange={handleLowercaseSwitch} />} 
+              onChange={handleLowercaseSwitch} 
+              data-testid="lowerSwitch" />} 
             label="Lowercase" 
             labelPlacement='start' />
             <FormControlLabel 
             control={<Switch 
               checked={uppercase}
-              onChange={handleUppercaseSwitch} />} 
+              onChange={handleUppercaseSwitch} 
+              data-testid="upperSwitch" />} 
             label="Uppercase" 
             labelPlacement='start' />
             <FormControlLabel 
             control={<Switch 
               checked={numbers}
-              onChange={handleNumbersSwitch} />} 
+              onChange={handleNumbersSwitch} 
+              data-testid="numbersSwitch" />} 
             label="Numbers" 
             labelPlacement='start' />
             <FormControlLabel 
             control={<Switch 
               checked={symbols}
-              onChange={handleSymbolsSwitch} />} 
+              onChange={handleSymbolsSwitch} 
+              data-testid="symbolsSwitch" />} 
             label="Symbols" 
             labelPlacement='start' />
           </div>
