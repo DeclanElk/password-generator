@@ -1,5 +1,5 @@
 # Password Generator Website
-A simple React.JS based website that generates passwords based on user input.
+A simple React.JS based website written in TypeScript that generates random passwords based on user input.
 
 ### Setup
 You can launch the site by cloning the repository and running `npm start` from the root directory.
