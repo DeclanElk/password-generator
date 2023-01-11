@@ -4,6 +4,10 @@ export default function generatePassword(lowercase: Boolean,
     symbols: Boolean,
     length: number) {
 
+    //Validating inputs
+    if (!uppercase && !lowercase && !numbers && !symbols) return ""
+    if (length < 1) return ""
+
     let charset: string[] = []
 
     //For each boolean input, check and add relevant chars to charset
@@ -19,9 +23,6 @@ export default function generatePassword(lowercase: Boolean,
     if (symbols) {
         charset = charset.concat(["!", "@", "#", "$", "%", "^", "&", "*", "?", ";", "+", "-"])
     }
-
-    //Handling in case the function is called with no options selected
-    if (!uppercase && !lowercase && !numbers && !symbols) return ""
 
     return [...Array(length)].map((value) => {
         return charset[Math.floor(Math.random() * (charset.length))]
