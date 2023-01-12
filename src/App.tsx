@@ -141,7 +141,8 @@ function App() {
             InputProps = {{
               readOnly: true,
             }}
-            aria-readonly />
+            aria-readonly 
+            data-testid = "passwordField"/>
           <Button 
           variant = "contained"
           onClick={handleGeneratePassword}

@@ -14,3 +14,10 @@ test("All character set options render", () => {
     expect(numbersCharset).toBeVisible();
     expect(symbolsCharset).toBeVisible();
 })
+
+test("Password generates on render", () => {
+    render(<App />)
+
+    const passwordOutput = screen.getByTestId("passwordField");
+    expect(passwordOutput).not.toHaveValue("")
+})
