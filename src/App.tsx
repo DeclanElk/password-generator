@@ -7,7 +7,8 @@ import { Card,
   FormControlLabel, 
   Slider, 
   TextField, 
-  Button, 
+  Button,
+  Tooltip,
 } from '@mui/material';
 
 function App() {
@@ -143,15 +144,27 @@ function App() {
             }}
             aria-readonly 
             data-testid = "passwordField"/>
-          <Button 
-          variant = "contained"
-          onClick={handleGeneratePassword}
-          sx = {{
-            width: '120px',
-            margin: '1rem auto 0',
-          }}>
-            Generate
-          </Button>
+          <Tooltip 
+          title = {!lowercase && 
+            !uppercase && 
+            !numbers && 
+            !symbols ? 
+            "Please select at least 1 character set option above" 
+            : null}
+          placement = "top"
+          disableFocusListener
+          enterTouchDelay = {50} 
+          leaveTouchDelay = {3000}>
+            <span className = "button-container">
+              <Button 
+              variant = "contained"
+              onClick = {handleGeneratePassword}
+              disabled = {!lowercase && !uppercase && !numbers && !symbols ? true : false }
+              data-testid = "generateButton">
+                Generate
+              </Button>
+            </span>
+          </Tooltip>
         </FormGroup>
       </Card>
     </div>

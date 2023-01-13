@@ -30,3 +30,8 @@ h4 a {
     justify-content: space-around;
     flex-wrap: wrap;
 }
+
+.button-container {
+    margin: 1rem auto 0;
+    max-width: 140px;
+}
