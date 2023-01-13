@@ -11,4 +11,4 @@ Unit tests have been set up using Jest for both the password generation logic an
 To build the project into a production build, run `npm run build` from the root directory
 
 ### Continuous Integration
-A GitHub Actions Continuous Integration script has been set up to automatically run unit tests and build the app when changes are committed or pull requests are merged to the main branch. Check out the Actions tab to see more.
+A GitHub Actions Continuous Integration script has been set up to automatically run unit tests and build the app when changes are committed or pull requests are merged to the main branch. Check out the [Actions tab](../../actions) to see more.
